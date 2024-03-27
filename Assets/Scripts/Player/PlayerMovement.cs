@@ -1,40 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-
+// This script was written on video because of a requirement for the project.
+// Help from my original script that was written during class.
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private InputActionReference IA_Ref;       // Input action for movement.
-    private Rigidbody2D rb;                                     // Reference to the player's Rigidbody2D component.
-    private Vector2 movementInput;                              // The current movement input.
-    private Vector2 savedMoveInput;                             // The last non-zero movement input.
-    private float currentSpeed;                                 // The current speed of the player.
-    [SerializeField] private float maxSpeed = 5;                // The maximum speed of the player.
-    [SerializeField] private float acceleration = 0.5f;         // The acceleration of the player.
-    [SerializeField] private float deceleration = 0.5f;         // The deceleration of the player.
+    [SerializeField] private float playerMoveSpeed = 5.0f; // The speed of the player moving.
+    [SerializeField] private float playerJumpHeight = 4.5f; // The height of the player's jump.
+    private Rigidbody2D rb; // Reference to the player's Rigidbody2D component.
 
-    // Start is called before the first frame update.
+    // Start is called before the first frame update. 
     void Start() {
+        // Grab the player's Rigidbody component.
         rb = GetComponent<Rigidbody2D>();
     }
-    
+
     // Update is called once per frame.
-    private void Update() {
-        movementInput = IA_Ref.action.ReadValue<Vector2>();  
+    void Update() {
+        // Check for these every frame.
+        PlayerMoved();
+        PlayerJumped();
     }
 
-    // FixedUpdate is called at a fixed interval and is independent of frame rate.
-    void FixedUpdate() {
-        if(movementInput.magnitude > 0) {
-            savedMoveInput = movementInput;
-            currentSpeed += acceleration * maxSpeed * Time.deltaTime;
+    void PlayerMoved() {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        // Add velocity to the player based on the horizontal input and the player's move speed.
+        rb.velocity = new Vector2(horizontalInput * playerMoveSpeed, rb.velocity.y);
+    }
+
+    void PlayerJumped() {
+        // If the player hits the jump key, and the player is not already moving up or down, then add a jump velocity.
+        if(Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.001f) {
+            Vector2 jumpVelocity = new Vector2(0, playerJumpHeight);
+            rb.velocity += jumpVelocity;
         }
-        else {
-            currentSpeed -= deceleration * maxSpeed * Time.deltaTime;
-        }
-        currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
-        rb.velocity = savedMoveInput * currentSpeed;
     }
 }
