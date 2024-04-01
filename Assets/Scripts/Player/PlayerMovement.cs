@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerJumped() {
         bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.5f);
-        Debug.Log("Is the player grounded? " + isGrounded);
+        //Debug.Log("Is the player grounded? " + isGrounded);
 
         // If the player hits the jump key, and the player is not already moving up or down, then add a jump velocity.
         if(Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.001f && isGrounded == true) {
