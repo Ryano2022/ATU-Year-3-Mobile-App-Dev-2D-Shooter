@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// This script was written on video because of a requirement for the project.
-// Help from my original script that was written during class.
+/* 
+    This script was written on video because of a requirement for the project.
+    Help from my original script that was written during class.
+    This script, however, has been heavily modified and improved upon since then.
+*/ 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerMoveSpeed = 5.0f; // The speed of the player moving.
