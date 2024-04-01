@@ -29,17 +29,35 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void PlayerMoved() {
+        // Get the horizontal input from the player.
         float horizontalInput = Input.GetAxis("Horizontal");
-        // Add velocity to the player based on the horizontal input and the player's move speed.
-        rb.velocity = new Vector2(horizontalInput * playerMoveSpeed, rb.velocity.y);
+        // Amount to offset the raycast by.
+        float raycastOffset = 0.525f;
+        // The starting position of the raycast.
+        Vector2 leftStartPos = (Vector2)transform.position + Vector2.left * raycastOffset;
+        Vector2 rightStartPos = (Vector2)transform.position + Vector2.right * raycastOffset;
+        // The raycast hit information.
+        RaycastHit2D hitLeft = Physics2D.Raycast(leftStartPos, Vector2.left, 0.65f);
+        RaycastHit2D hitRight = Physics2D.Raycast(rightStartPos, Vector2.right, 0.65f);
+        // Check if the player is touching a wall.
+        bool isTouchingWallLeft = hitLeft.collider != null;
+        bool isTouchingWallRight = hitRight.collider != null;
+        // Draw the raycasts for debugging.
+        /*
+        Debug.DrawRay(leftStartPos, Vector2.left * 0.65f, Color.red);
+        Debug.DrawRay(rightStartPos, Vector2.right * 0.65f, Color.red);
+        Debug.Log("Left: " + isTouchingWallLeft + "\nRight: " + isTouchingWallRight);
+        */
+
+        // Check the direction of input and whether the player is touching a wall in that direction
+        if ((horizontalInput < 0 && !isTouchingWallLeft) || (horizontalInput > 0 && !isTouchingWallRight)) {
+            rb.velocity = new Vector2(horizontalInput * playerMoveSpeed, rb.velocity.y);
+        }
     }
 
     void PlayerJumped() {
-        bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.5f);
-        //Debug.Log("Is the player grounded? " + isGrounded);
-
         // If the player hits the jump key, and the player is not already moving up or down, then add a jump velocity.
-        if(Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.001f && isGrounded == true) {
+        if(Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.001f) {
             Vector2 jumpVelocity = new Vector2(0, playerJumpHeight);
             rb.velocity += jumpVelocity;
         }
