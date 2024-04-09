@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
     This script was written on video because of a requirement for the project.
     Help from my original script that was written during class.
     This script, however, has been heavily modified and improved upon since then.
-*/ 
+*/
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerMoveSpeed = 5.0f;          // The player's movement speed.
@@ -32,27 +33,44 @@ public class PlayerMovement : MonoBehaviour
         isInBounds();
     }
 
-    void PlayerMoved() {
-        // Get the horizontal input from the player.
-        movementInput = movementControls.action.ReadValue<Vector2>();
-        //Debug.Log("Movement Input: " + movementInput);
+    bool checkForWall(string direction) {
+        direction = direction.ToLower();
+        bool result = false;
+
         // Amount to offset the raycast by.
         float raycastOffset = 0.525f;
-        // The starting position of the raycast.
-        Vector2 leftStartPos = (Vector2)transform.position + Vector2.left * raycastOffset;
-        Vector2 rightStartPos = (Vector2)transform.position + Vector2.right * raycastOffset;
-        // The raycast hit information.
-        RaycastHit2D hitLeft = Physics2D.Raycast(leftStartPos, Vector2.left, 0.1f);
-        RaycastHit2D hitRight = Physics2D.Raycast(rightStartPos, Vector2.right, 0.1f);
-        // Check if the player is touching a wall.
-        bool isTouchingWallLeft = hitLeft.collider != null;
-        bool isTouchingWallRight = hitRight.collider != null;
+
+        if(direction == "left") {
+            // The starting position of the raycast.
+            Vector2 leftStartPos = (Vector2)transform.position + Vector2.left * raycastOffset;
+            // The raycast hit information.
+            RaycastHit2D hitLeft = Physics2D.Raycast(leftStartPos, Vector2.left, 0.1f);
+            // Check if the player is touching a wall.
+            result = hitLeft.collider != null;
+        } 
+        else if(direction == "right") {
+            Vector2 rightStartPos = (Vector2)transform.position + Vector2.right * raycastOffset;
+            RaycastHit2D hitRight = Physics2D.Raycast(rightStartPos, Vector2.right, 0.1f);
+            result = hitRight.collider != null;
+        }
+        
         /*
         Debug.DrawRay(leftStartPos, Vector2.left * 0.1f, Color.red);
         Debug.DrawRay(rightStartPos, Vector2.right * 0.1f, Color.red);
         Debug.Log("Left: " + isTouchingWallLeft + "\nRight: " + isTouchingWallRight);
-        */ 
+        */
 
+        return result;
+    }
+
+    void PlayerMoved() {
+        // Get the horizontal input from the player.
+        movementInput = movementControls.action.ReadValue<Vector2>();
+        //Debug.Log("Movement Input: " + movementInput);
+
+        bool isTouchingWallLeft = checkForWall("left");
+        bool isTouchingWallRight = checkForWall("right");
+        
         // Check the direction of input and whether the player is touching a wall in that direction.
         if ((movementInput.x < 0 && !isTouchingWallLeft) || (movementInput.x > 0 && !isTouchingWallRight)) {
             rb.velocity = new Vector2(movementInput.x * playerMoveSpeed, rb.velocity.y);
@@ -62,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
     void PlayerJumped() {
         jumpInput = jumpControls.action.ReadValue<float>();
         //Debug.Log("Jump Input: " + jumpInput);
+        
         // If the player hits the jump key, and the player is not already moving up or down, then add a jump velocity.
         if(jumpInput > 0 && Mathf.Abs(rb.velocity.y) < 0.001f) {
             Vector2 jumpVelocity = new Vector2(0, playerJumpHeight);
@@ -74,6 +93,32 @@ public class PlayerMovement : MonoBehaviour
         if(transform.position.x < leftBorder || transform.position.x > rightBorder || transform.position.y < bottomBorder || transform.position.y > topBorder) {
             Debug.Log("Player was out of bounds.\nResetting player position. ");
             transform.position = new Vector2(0, 0);
+        }
+    }
+
+    // Touch screen left movement button.
+    public void tsMoveLeft() {
+        bool isTouchingWallLeft = checkForWall("left");
+
+        if(!isTouchingWallLeft) {
+            rb.velocity = new Vector2(-playerMoveSpeed, rb.velocity.y);
+        }
+    }
+
+    // Touch screen right movement button.
+    public void tsMoveRight() {
+        bool isTouchingWallRight = checkForWall("right");
+
+        if(!isTouchingWallRight) {
+            rb.velocity = new Vector2(playerMoveSpeed, rb.velocity.y);
+        }
+    }
+
+    // Touch screen jump button.
+    public void tsJump() {
+        if(Mathf.Abs(rb.velocity.y) < 0.001f) {
+            Vector2 jumpVelocity = new Vector2(0, playerJumpHeight);
+            rb.velocity += jumpVelocity;
         }
     }
 }
