@@ -550,6 +550,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794003600}
   m_CullTransparentMesh: 1
+--- !u!1 &813343600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1263621333442489568, guid: 73d1e22f7f486ef4aa5aabcaf5526900, type: 3}
+  m_PrefabInstance: {fileID: 1974439151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &813343604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813343600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e1b8573fe83234b933858bc83b2408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAspect: {x: 9, y: 16}
 --- !u!1 &849748145
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +580,7 @@ GameObject:
   - component: {fileID: 849748149}
   - component: {fileID: 849748148}
   - component: {fileID: 849748147}
+  - component: {fileID: 849748150}
   m_Layer: 5
   m_Name: Move Right Button
   m_TagString: Untagged
@@ -632,19 +651,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 849748148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1849191895}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: tsMoveRight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &849748148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +690,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849748145}
   m_CullTransparentMesh: 1
+--- !u!114 &849748150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849748145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1849191900}
+          m_TargetAssemblyTypeName: PlayerTSMovement, Assembly-CSharp
+          m_MethodName: StartMovingRight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1849191900}
+          m_TargetAssemblyTypeName: PlayerTSMovement, Assembly-CSharp
+          m_MethodName: StopMovingRight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &860714598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1089,6 +1141,7 @@ GameObject:
   - component: {fileID: 1358154141}
   - component: {fileID: 1358154140}
   - component: {fileID: 1358154139}
+  - component: {fileID: 1358154142}
   m_Layer: 5
   m_Name: Move Left Button
   m_TagString: Untagged
@@ -1159,19 +1212,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1358154140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1849191895}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: tsMoveLeft
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1358154140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1251,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358154137}
   m_CullTransparentMesh: 1
+--- !u!114 &1358154142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358154137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1849191900}
+          m_TargetAssemblyTypeName: PlayerTSMovement, Assembly-CSharp
+          m_MethodName: StartMovingLeft
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1849191900}
+          m_TargetAssemblyTypeName: PlayerTSMovement, Assembly-CSharp
+          m_MethodName: StopMovingLeft
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1371569409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1680,6 +1766,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cefdf4c221efe694cb62d85beb808059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1849191900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4330873300972204806, guid: 2729ca89e07f227488615b211111c822, type: 3}
+  m_PrefabInstance: {fileID: 2071463001833928253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849191894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ff3090c872ceb459ba5c09830d8922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1888054306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,8 +1860,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1849191895}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 1849191900}
+        m_TargetAssemblyTypeName: PlayerTSMovement, Assembly-CSharp
         m_MethodName: tsJump
         m_Mode: 1
         m_Arguments:
@@ -1936,7 +2033,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1263621333442489568, guid: 73d1e22f7f486ef4aa5aabcaf5526900, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 813343604}
   m_SourcePrefab: {fileID: 100100000, guid: 73d1e22f7f486ef4aa5aabcaf5526900, type: 3}
 --- !u!4 &2071802490 stripped
 Transform:
@@ -2087,17 +2187,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2038391056154415336, guid: 2729ca89e07f227488615b211111c822, type: 3}
+      propertyPath: playerMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3100866416618437312, guid: 2729ca89e07f227488615b211111c822, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3100866416618437312, guid: 2729ca89e07f227488615b211111c822, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068110222581880213, guid: 2729ca89e07f227488615b211111c822, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 4330873300972204806, guid: 2729ca89e07f227488615b211111c822, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1849191895}
+    - target: {fileID: 4859703851146822286, guid: 2729ca89e07f227488615b211111c822, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5523248774309842888, guid: 2729ca89e07f227488615b211111c822, type: 3}
       propertyPath: m_LocalPosition.x
