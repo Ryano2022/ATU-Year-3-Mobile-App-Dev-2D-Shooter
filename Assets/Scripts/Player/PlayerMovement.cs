@@ -11,13 +11,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float playerMoveSpeed = 5.0f;          // The player's movement speed.
-    [SerializeField] private float playerJumpHeight = 4.5f;         // The player's jump height.
+    [SerializeField] public float playerMoveSpeed = 3.0f;          // The player's movement speed.
+    [SerializeField] public float playerJumpHeight = 4.5f;         // The player's jump height.
     [SerializeField] private InputActionReference movementControls; // The player's movement controls.
     [SerializeField] private InputActionReference jumpControls;     // The player's jump controls.
     private Vector2 movementInput;                                  // The player's movement vector.
     private float jumpInput;                                        // The player's jump input.
-    private Rigidbody2D rb;                                         // Rigidbody2D component of the player.
+    public Rigidbody2D rb;                                         // Rigidbody2D component of the player.
     private float leftBorder = -10.0f;                              // The left world border of the game.
     private float rightBorder = 10.0f;                              // The right world border of the game.
     private float topBorder = 5.0f;                                 // The top world border of the game.
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         isInBounds();
     }
 
-    bool checkForWall(string direction) {
+    public bool checkForWall(string direction) {
         direction = direction.ToLower();
         bool result = false;
 
@@ -93,32 +93,6 @@ public class PlayerMovement : MonoBehaviour
         if(transform.position.x < leftBorder || transform.position.x > rightBorder || transform.position.y < bottomBorder || transform.position.y > topBorder) {
             Debug.Log("Player was out of bounds.\nResetting player position. ");
             transform.position = new Vector2(0, 0);
-        }
-    }
-
-    // Touch screen left movement button.
-    public void tsMoveLeft() {
-        bool isTouchingWallLeft = checkForWall("left");
-
-        if(!isTouchingWallLeft) {
-            rb.velocity = new Vector2(-playerMoveSpeed, rb.velocity.y);
-        }
-    }
-
-    // Touch screen right movement button.
-    public void tsMoveRight() {
-        bool isTouchingWallRight = checkForWall("right");
-
-        if(!isTouchingWallRight) {
-            rb.velocity = new Vector2(playerMoveSpeed, rb.velocity.y);
-        }
-    }
-
-    // Touch screen jump button.
-    public void tsJump() {
-        if(Mathf.Abs(rb.velocity.y) < 0.001f) {
-            Vector2 jumpVelocity = new Vector2(0, playerJumpHeight);
-            rb.velocity += jumpVelocity;
         }
     }
 }

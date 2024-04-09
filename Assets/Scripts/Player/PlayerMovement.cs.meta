@@ -3,7 +3,9 @@ guid: cefdf4c221efe694cb62d85beb808059
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - movementControls: {fileID: -7538543005693219425, guid: 4c41ec5bb78d8d84c972540c43ebfd24, type: 3}
+  - jumpControls: {fileID: -2606418189303016408, guid: 4c41ec5bb78d8d84c972540c43ebfd24, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4859703851146822286}
   - component: {fileID: 5463142799323277308}
   - component: {fileID: 2038391056154415336}
+  - component: {fileID: 4330873300972204806}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -101,7 +102,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -171,7 +172,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cefdf4c221efe694cb62d85beb808059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoveSpeed: 5
+  playerMoveSpeed: 3
   playerJumpHeight: 4.5
   movementControls: {fileID: -7538543005693219425, guid: 4c41ec5bb78d8d84c972540c43ebfd24, type: 3}
   jumpControls: {fileID: -2606418189303016408, guid: 4c41ec5bb78d8d84c972540c43ebfd24, type: 3}
+--- !u!114 &4330873300972204806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100866416618437312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ff3090c872ceb459ba5c09830d8922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
