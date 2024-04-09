@@ -499,7 +499,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 794003603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1849191894}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &794003603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +632,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 849748148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1849191895}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: tsMoveRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &849748148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,12 +854,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980772202}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -400, y: -217.78975, z: 0}
+  m_LocalScale: {x: 0.7187781, y: 0.7187781, z: 0.7187781}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1203902487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1121510111
 GameObject:
@@ -1045,6 +1069,7 @@ RectTransform:
   - {fileID: 1193282085}
   - {fileID: 1513038429}
   - {fileID: 1797281754}
+  - {fileID: 980772204}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1134,7 +1159,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1358154140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1849191895}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: tsMoveLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1358154140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,6 +1664,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835616367}
   m_CullTransparentMesh: 1
+--- !u!1 &1849191894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3100866416618437312, guid: 2729ca89e07f227488615b211111c822, type: 3}
+  m_PrefabInstance: {fileID: 2071463001833928253}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1849191895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2038391056154415336, guid: 2729ca89e07f227488615b211111c822, type: 3}
+  m_PrefabInstance: {fileID: 2071463001833928253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849191894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cefdf4c221efe694cb62d85beb808059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1888054306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,7 +1762,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1888054309}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1849191895}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: tsJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1888054309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2084,7 +2149,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1974439151}
-  - {fileID: 980772204}
   - {fileID: 1203902487}
   - {fileID: 1903227327}
   - {fileID: 2071463001833928253}
