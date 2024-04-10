@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         bool result = false;
 
         // Amount to offset the raycast by.
-        float raycastOffset = 0.525f;
+        float raycastOffset = 0.625f;
 
         if(direction == "left") {
             // The starting position of the raycast.
@@ -53,12 +53,6 @@ public class PlayerMovement : MonoBehaviour
             RaycastHit2D hitRight = Physics2D.Raycast(rightStartPos, Vector2.right, 0.1f);
             result = hitRight.collider != null;
         }
-        
-        /*
-        Debug.DrawRay(leftStartPos, Vector2.left * 0.1f, Color.red);
-        Debug.DrawRay(rightStartPos, Vector2.right * 0.1f, Color.red);
-        Debug.Log("Left: " + isTouchingWallLeft + "\nRight: " + isTouchingWallRight);
-        */
 
         return result;
     }
