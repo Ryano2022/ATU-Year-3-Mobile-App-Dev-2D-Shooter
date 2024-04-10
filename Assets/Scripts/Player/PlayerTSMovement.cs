@@ -29,7 +29,7 @@ public class PlayerTSMovement : MonoBehaviour
         bool isTouchingWallLeft = playerMovement.checkForWall("left");
 
         if (!isTouchingWallLeft) {
-            rb.velocity = new Vector2(-(playerMovement.playerMoveSpeed / 2), rb.velocity.y);
+            rb.velocity = new Vector2(-playerMovement.playerMoveSpeed, rb.velocity.y);
         }
     }
 
@@ -38,7 +38,7 @@ public class PlayerTSMovement : MonoBehaviour
         bool isTouchingWallRight = playerMovement.checkForWall("right");
 
         if (!isTouchingWallRight && movingRight == true) {
-            rb.velocity = new Vector2(playerMovement.playerMoveSpeed / 2, rb.velocity.y);
+            rb.velocity = new Vector2(playerMovement.playerMoveSpeed, rb.velocity.y);
         }
     }
 

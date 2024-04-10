@@ -74,6 +74,25 @@ public class PlayerMovement : MonoBehaviour
         // Check the direction of input and whether the player is touching a wall in that direction.
         if ((movementInput.x < 0 && !isTouchingWallLeft) || (movementInput.x > 0 && !isTouchingWallRight)) {
             rb.velocity = new Vector2(movementInput.x * playerMoveSpeed, rb.velocity.y);
+        } 
+        else if (Mathf.Abs(movementInput.x) < 0.01f) { 
+            // Reduce the horizontal velocity by 10% each frame if no horizontal input is given.
+            rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y); 
+        }
+    }
+
+    void PlayerMoved2() {
+        // Get the horizontal input from the player.
+        movementInput = movementControls.action.ReadValue<Vector2>();
+
+        bool isTouchingWallLeft = checkForWall("left");
+        bool isTouchingWallRight = checkForWall("right");
+        
+        // Check the direction of input and whether the player is touching a wall in that direction.
+        if ((movementInput.x < 0 && !isTouchingWallLeft) || (movementInput.x > 0 && !isTouchingWallRight)) {
+            rb.velocity = new Vector2(movementInput.x * playerMoveSpeed, rb.velocity.y);
+        } else if (Mathf.Abs(movementInput.x) < 0.01f) { // If no horizontal input is given
+            rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y); // Reduce the horizontal velocity by 10% each frame
         }
     }
 
