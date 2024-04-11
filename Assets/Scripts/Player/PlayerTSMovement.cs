@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class PlayerTSMovement : MonoBehaviour
 {
-    public PlayerMovement playerMovement;
-    private Rigidbody2D rb;
-    private bool movingLeft;
-    private bool movingRight;
+    public PlayerMovement playerMovement;         // Reference to the PlayerMovement script.
+    private Rigidbody2D rb;                       // Rigidbody2D component of the player.
+    private bool movingLeft;                      // Is the player moving left?
+    private bool movingRight;                     // Is the player moving right?                      
+    private SpriteRenderer sr;                    // The sprite renderer component of the player.
+    public SpriteRenderer srLeg;                  // The sprite renderer component of the player's leg.
     
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+
+        // Get the "Leg" child and its SpriteRenderer
+        Transform legTransform = transform.Find("Leg");
+        if (legTransform != null) {
+            srLeg = legTransform.GetComponent<SpriteRenderer>();
+        }
+
         movingLeft = false;
         movingRight = false;
     }
@@ -30,6 +40,8 @@ public class PlayerTSMovement : MonoBehaviour
 
         if (!isTouchingWallLeft) {
             rb.velocity = new Vector2(-playerMovement.playerMoveSpeed, rb.velocity.y);
+            sr.flipX = true;
+            srLeg.flipX = true;  
         }
     }
 
@@ -39,6 +51,8 @@ public class PlayerTSMovement : MonoBehaviour
 
         if (!isTouchingWallRight && movingRight == true) {
             rb.velocity = new Vector2(playerMovement.playerMoveSpeed, rb.velocity.y);
+            sr.flipX = false;
+            srLeg.flipX = false;  
         }
     }
 
