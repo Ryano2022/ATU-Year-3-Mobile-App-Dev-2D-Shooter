@@ -22,12 +22,12 @@ public class PlayerMovement : MonoBehaviour
     private float rightBorder = 10.0f;                              // The right world border of the game.
     private float topBorder = 5.0f;                                 // The top world border of the game.
     private float bottomBorder = -5.0f;                             // The bottom world border of the game.
-    private SpriteRenderer sr;                                      // The sprite renderer component of the player.
-    private SpriteRenderer srLeg;                                   // The sprite renderer component of the player's weapon.
+    private SpriteRenderer srPlayer;                                // The sprite renderer component of the player.
+    private SpriteRenderer srLeg;                                   // The sprite renderer component of the player's leg.
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        srPlayer = GetComponent<SpriteRenderer>();
 
         // Get the "Leg" child and its SpriteRenderer
         Transform legTransform = transform.Find("Leg");
@@ -84,11 +84,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if(movementInput.x > 0) {
-            sr.flipX = false;
+            srPlayer.flipX = false;
             srLeg.flipX = false;
         } 
         else if(movementInput.x < 0) {
-            sr.flipX = true;
+            srPlayer.flipX = true;
             srLeg.flipX = true;            
         }
     }
