@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/* 
-    This script was written on video because of a requirement for the project.
-    Help from my original script that was written during class.
-    This script, however, has been heavily modified and improved upon since then.
+/*
+    This script was partially written during a recording for the project.
 */
 
 public class PlayerMovement : MonoBehaviour
@@ -24,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private float bottomBorder = -5.0f;                             // The bottom world border of the game.
     private SpriteRenderer srPlayer;                                // The sprite renderer component of the player.
     private SpriteRenderer srLeg;                                   // The sprite renderer component of the player's leg.
+    private SpriteRenderer srWeapon;                                // The sprite renderer component of the player's weapon.
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -33,7 +32,17 @@ public class PlayerMovement : MonoBehaviour
         Transform legTransform = transform.Find("Leg");
         if (legTransform != null) {
             srLeg = legTransform.GetComponent<SpriteRenderer>();
+            Debug.Log("KBM - Leg found!");
         }
+
+        // Get the "Weapon" child and its SpriteRenderer.
+        Transform weaponTransform = transform.Find("Pistol");
+        if (weaponTransform != null) {
+            srWeapon = weaponTransform.GetComponent<SpriteRenderer>();
+            Debug.Log("KBM - Weapon found!");
+        }
+
+        srWeapon.enabled = false;
     }
 
     void Update() {
@@ -84,12 +93,25 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if(movementInput.x > 0) {
+            // Flip the player, the player's leg and the player's weapon to the RIGHT side.
             srPlayer.flipX = false;
             srLeg.flipX = false;
+            srLeg.transform.localPosition = new Vector2(0.175f, -0.2f);
+            srLeg.transform.localRotation = Quaternion.Euler(0, 0, 50);
+            srWeapon.enabled = true;
+            srWeapon.flipX = false;
+            srWeapon.transform.localPosition = new Vector2(0.35f, -0.15f);
+            
         } 
         else if(movementInput.x < 0) {
+            // Flip the player, the player's leg and the player's weapon to the LEFT side.
             srPlayer.flipX = true;
-            srLeg.flipX = true;            
+            srLeg.flipX = true;
+            srLeg.transform.localPosition = new Vector2(-0.175f, -0.2f);
+            srLeg.transform.localRotation = Quaternion.Euler(0, 0, -50);
+            srWeapon.enabled = true;
+            srWeapon.flipX = true;
+            srWeapon.transform.localPosition = new Vector2(-0.35f, -0.15f);
         }
     }
 
