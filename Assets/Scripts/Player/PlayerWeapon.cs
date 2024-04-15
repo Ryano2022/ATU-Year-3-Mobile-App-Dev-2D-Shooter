@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    [SerializeField] private InputActionReference attack;
-    [SerializeField] private Projectile projectileParent;
-    [SerializeField] private float projectileSpeed = 20f;
-    [SerializeField] private float fireRate = 0.1f;
-    private Coroutine firingCoroutine;
-    private int facingDirection = 1;
+    [SerializeField] private InputActionReference attack;           // The player's attack controls.
+    [SerializeField] private Projectile projectileParent;           // The projectile prefab.
+    [SerializeField] private float projectileSpeed = 20f;           // The speed of the projectile.
+    [SerializeField] private float fireRate = 0.1f;                 // The rate of fire.  
+    private Coroutine firingCoroutine;                              // The coroutine for firing the projectile.
+    private int facingDirection = 1;                                // The direction the player is facing.
 
     // Coroutine returns an IEnumerator type.
     private IEnumerator FireCoroutine() {
