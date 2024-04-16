@@ -46,12 +46,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update() {
-        PlayerMoved();
-        PlayerJumped();
-        isInBounds();
+        PlayerMove();
+        PlayerJump();
+        CheckIfInBounds();
     }
 
-    public bool checkForWall(string direction) {
+    public bool CheckIfHitWall(string direction) {
         direction = direction.ToLower();
         bool result = false;
 
@@ -75,13 +75,13 @@ public class PlayerMovement : MonoBehaviour
         return result;
     }
 
-    void PlayerMoved() {
+    void PlayerMove() {
         // Get the horizontal input from the player.
         movementInput = movementControls.action.ReadValue<Vector2>();
         //Debug.Log("Movement Input: " + movementInput);
 
-        bool isTouchingWallLeft = checkForWall("left");
-        bool isTouchingWallRight = checkForWall("right");
+        bool isTouchingWallLeft = CheckIfHitWall("left");
+        bool isTouchingWallRight = CheckIfHitWall("right");
         
         // Check the direction of input and whether the player is touching a wall in that direction.
         if ((movementInput.x < 0 && !isTouchingWallLeft) || (movementInput.x > 0 && !isTouchingWallRight)) {
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void PlayerJumped() {
+    void PlayerJump() {
         jumpInput = jumpControls.action.ReadValue<float>();
         //Debug.Log("Jump Input: " + jumpInput);
         
@@ -126,11 +126,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void isInBounds() {
+    void CheckIfInBounds() {
         // If the player goes out of bounds, then reset the player's position.
         if(transform.position.x < leftBorder || transform.position.x > rightBorder || transform.position.y < bottomBorder || transform.position.y > topBorder) {
             Debug.Log("Player was out of bounds.\nResetting player position. ");
             transform.position = new Vector2(0, 0);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

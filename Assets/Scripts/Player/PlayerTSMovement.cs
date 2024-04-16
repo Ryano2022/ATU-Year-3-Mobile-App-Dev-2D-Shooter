@@ -36,16 +36,16 @@ public class PlayerTSMovement : MonoBehaviour
 
     void Update() {
         if (movingLeft == true) {
-            tsMoveLeft();
+            TSPlayerMoveLeft();
         }
         if (movingRight == true) {
-            tsMoveRight();
+            TSPlayerMoveRight();
         }
     }
 
     // Touch screen left movement button.
-    public void tsMoveLeft() {
-        bool isTouchingWallLeft = playerMovement.checkForWall("left");
+    public void TSPlayerMoveLeft() {
+        bool isTouchingWallLeft = playerMovement.CheckIfHitWall("left");
 
         if (!isTouchingWallLeft) {
             rb.velocity = new Vector2(-playerMovement.playerMoveSpeed, rb.velocity.y);
@@ -61,8 +61,8 @@ public class PlayerTSMovement : MonoBehaviour
     }
 
     // Touch screen right movement button.
-    public void tsMoveRight() {
-        bool isTouchingWallRight = playerMovement.checkForWall("right");
+    public void TSPlayerMoveRight() {
+        bool isTouchingWallRight = playerMovement.CheckIfHitWall("right");
 
         if (!isTouchingWallRight && movingRight == true) {
             rb.velocity = new Vector2(playerMovement.playerMoveSpeed, rb.velocity.y);
@@ -78,7 +78,7 @@ public class PlayerTSMovement : MonoBehaviour
     }
 
     // Touch screen jump button.
-    public void tsJump() {
+    public void TSPlayerJump() {
         if (Mathf.Abs(rb.velocity.y) < 0.001f) {
             Vector2 jumpVelocity = new Vector2(0, playerMovement.playerJumpHeight);
             rb.velocity += jumpVelocity;
