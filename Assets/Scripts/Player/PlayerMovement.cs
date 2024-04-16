@@ -32,14 +32,14 @@ public class PlayerMovement : MonoBehaviour
         Transform legTransform = transform.Find("Leg");
         if (legTransform != null) {
             srLeg = legTransform.GetComponent<SpriteRenderer>();
-            Debug.Log("KBM - Leg found!");
+            //Debug.Log("KBM - Leg found!");
         }
 
         // Get the "Weapon" child and its SpriteRenderer.
         Transform weaponTransform = transform.Find("Pistol");
         if (weaponTransform != null) {
             srWeapon = weaponTransform.GetComponent<SpriteRenderer>();
-            Debug.Log("KBM - Weapon found!");
+            //Debug.Log("KBM - Weapon found!");
         }
 
         srWeapon.enabled = false;

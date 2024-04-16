@@ -20,14 +20,14 @@ public class PlayerTSMovement : MonoBehaviour
         Transform legTransform = transform.Find("Leg");
         if (legTransform != null) {
             srLeg = legTransform.GetComponent<SpriteRenderer>();
-            Debug.Log("TS - Leg found!");
+            //Debug.Log("TS - Leg found!");
         }
 
         // Get the "Weapon" child and its SpriteRenderer.
         Transform weaponTransform = transform.Find("Pistol");
         if (weaponTransform != null) {
             srWeapon = weaponTransform.GetComponent<SpriteRenderer>();
-            Debug.Log("TS - Weapon found!");
+            //Debug.Log("TS - Weapon found!");
         }
 
         movingLeft = false;
