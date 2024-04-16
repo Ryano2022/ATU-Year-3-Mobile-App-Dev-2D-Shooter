@@ -12,7 +12,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     BoxCollider2D enemyCollider;           // BoxCollider2D component of the enemy.
     JumperWeakPoint weakPoint;             // JumperWeakPoint script component of the enemy.
-    Lives lives;                           // Lives script component of the enemy.
+    Lives lives;                           // Lives script component.
+    Score score;                           // Score script component.
     int health = 3;                        // The enemy's health.
 
     void Start() {
@@ -25,8 +26,11 @@ public class EnemyBehaviour : MonoBehaviour
         weakPoint = GetComponentInChildren<JumperWeakPoint>();
         weakPoint.hasBeenHit = false;
 
-        // Get the Lives script component of the enemy.
+        // Get the Lives script component.
         lives = GameObject.Find("Lives").GetComponent<Lives>();
+
+        // Get the Score script component.
+        score = GameObject.Find("Score Text").GetComponent<Score>();
     }
 
     void Update() {
@@ -40,6 +44,7 @@ public class EnemyBehaviour : MonoBehaviour
             collision.gameObject.transform.position = new Vector2(0, 0);
             Debug.Log("Player has collided with the enemy.\nRespawning the player.");
             lives.DecrementLifeCount();
+            score.DecrementScore(score.score / 2);
         }
         else if(collision.gameObject.CompareTag("Bullet")) {
             // Destroy the bullet.
@@ -55,6 +60,7 @@ public class EnemyBehaviour : MonoBehaviour
             // If the enemy's health is 0, then destroy the enemy.  
             if(health <= 0) {
                 Destroy(gameObject);
+                score.IncrementScore(10);
                 Debug.Log("Enemy has been destroyed.");
             }
         }
