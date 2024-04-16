@@ -14,20 +14,24 @@ public class Score : MonoBehaviour
     
     void UpdateScore() {
         scoreText.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score;
+        Debug.Log("Score has been updated.");
     }
 
     public void IncrementScore(int scoreToAdd) {
         score += scoreToAdd;
+        Debug.Log("Score has been incremented by " + scoreToAdd + ".\nCurrent score: " + score);
         UpdateScore();
     }
 
     public void DecrementScore(int scoreToSubtract) {
         score -= scoreToSubtract;
+        Debug.Log("Score has been decremented by " + scoreToSubtract + ".\nCurrent score: " + score);
         UpdateScore();
     }
 
     public void ResetScore() {
         score = 0;
+        Debug.Log("Score has been reset.");
         UpdateScore();
     }
 }
