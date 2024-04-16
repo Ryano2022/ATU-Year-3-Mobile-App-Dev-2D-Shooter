@@ -408,6 +408,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+--- !u!1 &673116259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1346417570730703353, guid: 4139bd485cc5b5b408b0ed2b01dac00f, type: 3}
+  m_PrefabInstance: {fileID: 6367907807332529888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &673116264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673116259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1849191901}
+          m_TargetAssemblyTypeName: PlayerWeapon, Assembly-CSharp
+          m_MethodName: TSStartFiring
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1849191901}
+          m_TargetAssemblyTypeName: PlayerWeapon, Assembly-CSharp
+          m_MethodName: TSStopFiring
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &696744510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9130876573811149510, guid: 64a42a0af919ca14390876f7acfa6d8b, type: 3}
@@ -959,6 +1009,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ff3090c872ceb459ba5c09830d8922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1849191901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2605998031159666103, guid: 2729ca89e07f227488615b211111c822, type: 3}
+  m_PrefabInstance: {fileID: 2071463001833928253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849191894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a0f4611414f2142b663e73d211d45f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1896279436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1417,6 +1478,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2933928715990689025, guid: 4139bd485cc5b5b408b0ed2b01dac00f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933928715990689025, guid: 4139bd485cc5b5b408b0ed2b01dac00f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1849191894}
@@ -1520,10 +1585,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1849191900}
+    - target: {fileID: 5062100464028339979, guid: 4139bd485cc5b5b408b0ed2b01dac00f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TSPlayerJump
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1346417570730703353, guid: 4139bd485cc5b5b408b0ed2b01dac00f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 673116264}
   m_SourcePrefab: {fileID: 100100000, guid: 4139bd485cc5b5b408b0ed2b01dac00f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

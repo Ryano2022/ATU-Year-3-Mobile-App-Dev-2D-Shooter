@@ -10,19 +10,27 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private float projectileSpeed = 20f;           // The speed of the projectile.
     [SerializeField] private float fireRate = 0.1f;                 // The rate of fire.  
     private Coroutine firingCoroutine;                              // The coroutine for firing the projectile.
-    private int facingDirection = 1;                                // The direction the player is facing.
+    public int facingDirection = 1;                                 // The direction the player is facing.
+    PlatformCheck platformCheck;                                    // Reference to the PlatformCheck script.
+
+
+    void Start() {
+        platformCheck = GameObject.Find("Input Buttons").GetComponent<PlatformCheck>();
+    }
 
     // Coroutine returns an IEnumerator type.
     private IEnumerator FireCoroutine() {
         while (true) {
-            // If the player is looking right, instantiate the bullet and set its velocity to move right.
-            if (Input.GetAxis("Horizontal") > 0) {
-                facingDirection = 1;
-            }
+            if(platformCheck.platform == 0) {
+                // If the player is looking right, set the direction to face right.
+                if (Input.GetAxis("Horizontal") > 0) {
+                    facingDirection = 1;
+                }
 
-            // If the player is looking left, instantiate the bullet and set its velocity to move left.
-            if (Input.GetAxis("Horizontal") < 0) {
-                facingDirection = -1;
+                // If the player is looking left, set the direction to face left.
+                if (Input.GetAxis("Horizontal") < 0) {
+                    facingDirection = -1;
+                }
             }
 
             // Set the spawn position of the bullet to be in front of the player.
@@ -66,5 +74,13 @@ public class PlayerWeapon : MonoBehaviour
         attack.action.started -= Attack_started;
         attack.action.performed -= Attack_performed;
         attack.action.canceled -= Attack_canceled;
+    }
+
+    public void TSStartFiring() {
+        firingCoroutine = StartCoroutine(FireCoroutine());
+    }
+
+    public void TSStopFiring() {
+        StopCoroutine(firingCoroutine);
     }
 }

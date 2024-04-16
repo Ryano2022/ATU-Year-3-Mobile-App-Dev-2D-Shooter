@@ -9,8 +9,9 @@ public class PlayerTSMovement : MonoBehaviour
     private bool movingLeft;                      // Is the player moving left?
     private bool movingRight;                     // Is the player moving right?                      
     private SpriteRenderer srPlayer;              // The sprite renderer component of the player.
-    private SpriteRenderer srLeg;                  // The sprite renderer component of the player's leg.
+    private SpriteRenderer srLeg;                 // The sprite renderer component of the player's leg.
     private SpriteRenderer srWeapon;              // The sprite renderer component of the player's weapon.
+    private PlayerWeapon direction;               // The direction the player is facing.
     
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -37,9 +38,11 @@ public class PlayerTSMovement : MonoBehaviour
     void Update() {
         if (movingLeft == true) {
             TSPlayerMoveLeft();
+            direction.facingDirection = -1;
         }
         if (movingRight == true) {
             TSPlayerMoveRight();
+            direction.facingDirection = 1;
         }
     }
 
