@@ -19,9 +19,15 @@ public class Buttons : MonoBehaviour
         Debug.Log("Loaded scene: Tutorial ");
     }
 
-    public void SettingsButton() {
-        Debug.Log("Settings button pressed. ");
+    public void PreferencesButton() {
+        Debug.Log("Preferences button pressed. ");
         SceneManager.LoadScene("Preferences");
         Debug.Log("Loaded scene: Preferences ");
+    }
+
+    public void MainMenuButton() {
+        Debug.Log("Main Menu button pressed. ");
+        SceneManager.LoadScene("Main Menu");
+        Debug.Log("Loaded scene: Main Menu ");
     }
 }
