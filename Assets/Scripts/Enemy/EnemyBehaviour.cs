@@ -47,9 +47,6 @@ public class EnemyBehaviour : MonoBehaviour
             score.DecrementScore(score.score / 2);
         }
         else if(collision.gameObject.CompareTag("Bullet")) {
-            // Destroy the bullet.
-            Destroy(collision.gameObject);
-
             // Reduce the enemy's speed from being hit by a bullet.
             rb.velocity *= 0.1f;
 

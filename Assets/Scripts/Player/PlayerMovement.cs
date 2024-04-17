@@ -25,23 +25,23 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer srWeapon;                                // The sprite renderer component of the player's weapon.
 
     void Start() {
+        // Get the Rigidbody2D component of the player.
         rb = GetComponent<Rigidbody2D>();
-        srPlayer = GetComponent<SpriteRenderer>();
 
+        // Get the SpriteRenderer component of the player.
+        srPlayer = GetComponent<SpriteRenderer>();
         // Get the "Leg" child and its SpriteRenderer
         Transform legTransform = transform.Find("Leg");
         if (legTransform != null) {
             srLeg = legTransform.GetComponent<SpriteRenderer>();
             //Debug.Log("KBM - Leg found!");
         }
-
         // Get the "Weapon" child and its SpriteRenderer.
         Transform weaponTransform = transform.Find("Pistol");
         if (weaponTransform != null) {
             srWeapon = weaponTransform.GetComponent<SpriteRenderer>();
             //Debug.Log("KBM - Weapon found!");
         }
-
         srWeapon.enabled = false;
     }
 
@@ -51,45 +51,22 @@ public class PlayerMovement : MonoBehaviour
         CheckIfInBounds();
     }
 
-    public bool CheckIfHitWall(string direction) {
-        direction = direction.ToLower();
-        bool result = false;
-
-        // Amount to offset the raycast by.
-        float raycastOffset = 0.625f;
-
-        if(direction == "left") {
-            // The starting position of the raycast.
-            Vector2 leftStartPos = (Vector2)transform.position + Vector2.left * raycastOffset;
-            // The raycast hit information.
-            RaycastHit2D hitLeft = Physics2D.Raycast(leftStartPos, Vector2.left, 0.1f);
-            // Check if the player is touching a wall.
-            result = hitLeft.collider != null;
-        } 
-        else if(direction == "right") {
-            Vector2 rightStartPos = (Vector2)transform.position + Vector2.right * raycastOffset;
-            RaycastHit2D hitRight = Physics2D.Raycast(rightStartPos, Vector2.right, 0.1f);
-            result = hitRight.collider != null;
-        }
-
-        return result;
-    }
-
     void PlayerMove() {
         // Get the horizontal input from the player.
         movementInput = movementControls.action.ReadValue<Vector2>();
         //Debug.Log("Movement Input: " + movementInput);
-
-        bool isTouchingWallLeft = CheckIfHitWall("left");
-        bool isTouchingWallRight = CheckIfHitWall("right");
+        //if(movementInput.x != 0) {
+        //    Debug.Log(CheckIfHitWall("left") + " | " + CheckIfHitWall("right"));
+        //}
         
-        // Check the direction of input and whether the player is touching a wall in that direction.
-        if ((movementInput.x < 0 && !isTouchingWallLeft) || (movementInput.x > 0 && !isTouchingWallRight)) {
+        // Check the direction of input.
+        if (movementInput.x < 0 && CheckIfHitWall("left") != true || movementInput.x > 0 && CheckIfHitWall("right") != true) {
             rb.velocity = new Vector2(movementInput.x * playerMoveSpeed, rb.velocity.y);
+            srPlayer.transform.localRotation = Quaternion.Euler(0, 0, 0);
         } 
         else if (Mathf.Abs(movementInput.x) < 0.01f) { 
-            // Reduce the horizontal velocity by 10% each frame if no horizontal input is given.
-            rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y); 
+            // Reduce the horizontal velocity by 20% each frame if no horizontal input is given.
+            rb.velocity = new Vector2(rb.velocity.x * 0.8f, rb.velocity.y); 
         }
 
         if(movementInput.x > 0) {
@@ -101,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
             srWeapon.enabled = true;
             srWeapon.flipX = false;
             srWeapon.transform.localPosition = new Vector2(0.35f, -0.15f);
-            
         } 
         else if(movementInput.x < 0) {
             // Flip the player, the player's leg and the player's weapon to the LEFT side.
@@ -133,5 +109,31 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector2(0, 0);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
+    }
+
+    public bool CheckIfHitWall(string direction) {
+        direction = direction.ToLower();
+        bool result = false;
+
+        // Amount to offset the raycast by.
+        float raycastOffset = 0.625f;
+
+        if(direction == "left") {
+            // The starting position of the raycast.
+            Vector2 leftStartPos = (Vector2)transform.position + Vector2.left * raycastOffset;
+            // The raycast hit information.
+            RaycastHit2D hitLeft = Physics2D.Raycast(leftStartPos, Vector2.left, 0.1f);
+            // Check if the player is touching a wall.
+            Debug.DrawRay(leftStartPos, Vector2.left * 0.1f, Color.red);
+            result = hitLeft.collider != null;
+        } 
+        else if(direction == "right") {
+            Vector2 rightStartPos = (Vector2)transform.position + Vector2.right * raycastOffset;
+            RaycastHit2D hitRight = Physics2D.Raycast(rightStartPos, Vector2.right, 0.1f);
+            Debug.DrawRay(rightStartPos, Vector2.right * 1f, Color.red);
+            result = hitRight.collider != null;
+        }
+
+        return result;
     }
 }
