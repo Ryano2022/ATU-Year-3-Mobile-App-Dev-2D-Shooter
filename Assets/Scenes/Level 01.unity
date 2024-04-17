@@ -208,7 +208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4365374806270580801, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_Name
-      value: Enemy Jumper
+      value: Enemy Spider
       objectReference: {fileID: 0}
     - target: {fileID: 5216868726300326948, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -249,6 +249,22 @@ PrefabInstance:
     - target: {fileID: 5216868726300326948, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600164533746914511, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.759697
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600164533746914511, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7129071
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600164533746914511, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0050246418
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600164533746914511, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.14354646
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -772,11 +788,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4365374806270580801, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_Name
-      value: Enemy Jumper (4)
+      value: Enemy Spider (4)
       objectReference: {fileID: 0}
     - target: {fileID: 5216868726300326948, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.01
+      value: 24.42
       objectReference: {fileID: 0}
     - target: {fileID: 5216868726300326948, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -834,7 +850,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4365374806270580801, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_Name
-      value: Enemy Jumper (1)
+      value: Enemy Spider (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5216868726300326948, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -891,7 +907,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4365374806270580801, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_Name
-      value: Enemy Jumper (3)
+      value: Enemy Spider (3)
       objectReference: {fileID: 0}
     - target: {fileID: 5216868726300326948, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -953,7 +969,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4365374806270580801, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_Name
-      value: Enemy Jumper (2)
+      value: Enemy Spider (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5216868726300326948, guid: 74fbd3d2b4d81f7418bb66710fe3162a, type: 3}
       propertyPath: m_LocalPosition.x
