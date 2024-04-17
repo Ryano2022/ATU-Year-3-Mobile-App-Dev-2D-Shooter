@@ -6,12 +6,13 @@ public class EnemyBehaviour : MonoBehaviour
 {
     Rigidbody2D rb;                        // Rigidbody2D component of the enemy.
     private float leftBorder = -10.0f;     // The left world border of the game.
-    private float rightBorder = 10.0f;     // The right world border of the game.
+    private float rightBorder = 50.0f;     // The right world border of the game.
     private float topBorder = 5.0f;        // The top world border of the game.
     private float bottomBorder = -5.0f;    // The bottom world border of the game.
 
     BoxCollider2D enemyCollider;           // BoxCollider2D component of the enemy.
     JumperWeakPoint weakPoint;             // JumperWeakPoint script component of the enemy.
+    CameraMove cameraMove;                 // CameraMove script component.
     Lives lives;                           // Lives script component.
     Score score;                           // Score script component.
     int health = 3;                        // The enemy's health.
@@ -25,6 +26,9 @@ public class EnemyBehaviour : MonoBehaviour
         // Get the JumperWeakPoint script component of the enemy.
         weakPoint = GetComponentInChildren<JumperWeakPoint>();
         weakPoint.hasBeenHit = false;
+
+        // Get the CameraMove script component.
+        cameraMove = GameObject.Find("Main Camera").GetComponent<CameraMove>();
 
         // Get the Lives script component.
         lives = GameObject.Find("Lives").GetComponent<Lives>();
@@ -41,7 +45,8 @@ public class EnemyBehaviour : MonoBehaviour
         // Check if the enemy has collided with the player.
         if (collision.gameObject.CompareTag("Player") && !weakPoint.hasBeenHit) {
             // Respawn the player at the 0,0 point.
-            collision.gameObject.transform.position = new Vector2(0, 0);
+            collision.gameObject.transform.position = new Vector2(-8.5f, -1.25f);
+            cameraMove.ResetCameraPosition();
             Debug.Log("Player has collided with the enemy.\nRespawning the player.");
             lives.DecrementLifeCount();
             score.DecrementScore(score.score / 2);

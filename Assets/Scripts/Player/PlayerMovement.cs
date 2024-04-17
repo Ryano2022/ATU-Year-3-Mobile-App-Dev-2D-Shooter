@@ -17,12 +17,13 @@ public class PlayerMovement : MonoBehaviour
     private float jumpInput;                                        // The player's jump input.
     public Rigidbody2D rb;                                          // Rigidbody2D component of the player.
     private float leftBorder = -10.0f;                              // The left world border of the game.
-    private float rightBorder = 10.0f;                              // The right world border of the game.
+    private float rightBorder = 50.0f;                              // The right world border of the game.
     private float topBorder = 5.0f;                                 // The top world border of the game.
     private float bottomBorder = -5.0f;                             // The bottom world border of the game.
     private SpriteRenderer srPlayer;                                // The sprite renderer component of the player.
     private SpriteRenderer srLeg;                                   // The sprite renderer component of the player's leg.
     private SpriteRenderer srWeapon;                                // The sprite renderer component of the player's weapon.
+    private CameraMove cameraMove;                                  // The CameraMove script component.
 
     void Start() {
         // Get the Rigidbody2D component of the player.
@@ -43,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("KBM - Weapon found!");
         }
         srWeapon.enabled = false;
+
+        // Get the CameraMove script component.
+        cameraMove = GameObject.Find("Main Camera").GetComponent<CameraMove>();
     }
 
     void Update() {
@@ -106,8 +110,9 @@ public class PlayerMovement : MonoBehaviour
         // If the player goes out of bounds, then reset the player's position.
         if(transform.position.x < leftBorder || transform.position.x > rightBorder || transform.position.y < bottomBorder || transform.position.y > topBorder) {
             Debug.Log("Player was out of bounds.\nResetting player position. ");
-            transform.position = new Vector2(0, 0);
+            transform.position = new Vector2(-8.5f, -1.25f);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
+            cameraMove.ResetCameraPosition();
         }
     }
 
