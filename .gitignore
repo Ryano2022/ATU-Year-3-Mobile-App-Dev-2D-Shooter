@@ -76,3 +76,6 @@ crashlytics-build.properties
 
 # Debug Info
 "2D Scrolling Shooter_BurstDebugInformation_DoNotShip/"
+
+# Burst library output
+Armed Froggy_BurstDebugInformation_DoNotShip/tempburstlibs/armeabi-v7a/lib_burst_generated.txt
