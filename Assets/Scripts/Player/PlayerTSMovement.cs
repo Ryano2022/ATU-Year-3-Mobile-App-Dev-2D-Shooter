@@ -11,7 +11,6 @@ public class PlayerTSMovement : MonoBehaviour
     private SpriteRenderer srPlayer;              // The sprite renderer component of the player.
     private SpriteRenderer srLeg;                 // The sprite renderer component of the player's leg.
     private SpriteRenderer srWeapon;              // The sprite renderer component of the player's weapon.
-    private PlayerWeapon direction;               // The direction the player is facing.
     
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -24,13 +23,6 @@ public class PlayerTSMovement : MonoBehaviour
             //Debug.Log("TS - Leg found!");
         }
 
-        // Get the "Weapon" child and its SpriteRenderer.
-        Transform weaponTransform = transform.Find("Pistol");
-        if (weaponTransform != null) {
-            srWeapon = weaponTransform.GetComponent<SpriteRenderer>();
-            //Debug.Log("TS - Weapon found!");
-        }
-
         movingLeft = false;
         movingRight = false;
     }
@@ -38,11 +30,11 @@ public class PlayerTSMovement : MonoBehaviour
     void Update() {
         if (movingLeft == true) {
             TSPlayerMoveLeft();
-            direction.facingDirection = -1;
+            srPlayer.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         if (movingRight == true) {
             TSPlayerMoveRight();
-            direction.facingDirection = 1;
+            srPlayer.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
