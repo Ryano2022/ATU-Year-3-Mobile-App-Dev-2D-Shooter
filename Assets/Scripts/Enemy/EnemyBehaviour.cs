@@ -13,7 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     BoxCollider2D enemyCollider;           // BoxCollider2D component of the enemy.
     JumperWeakPoint weakPoint;             // JumperWeakPoint script component of the enemy.
     CameraMove cameraMove;                 // CameraMove script component.
-    Lives lives;                           // Lives script component.
+    Lives_UI livesUI;                      // Lives script component.
     Score score;                           // Score script component.
     int health = 3;                        // The enemy's health.
 
@@ -31,7 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
         cameraMove = GameObject.Find("Main Camera").GetComponent<CameraMove>();
 
         // Get the Lives script component.
-        lives = GameObject.Find("Lives").GetComponent<Lives>();
+        livesUI = GameObject.Find("Lives").GetComponent<Lives_UI>();
 
         // Get the Score script component.
         score = GameObject.Find("Score Text").GetComponent<Score>();
@@ -48,7 +48,7 @@ public class EnemyBehaviour : MonoBehaviour
             collision.gameObject.transform.position = new Vector2(-8.5f, -1.25f);
             cameraMove.ResetCameraPosition();
             Debug.Log("Player has collided with the enemy.\nRespawning the player.");
-            lives.DecrementLifeCount();
+            livesUI.DecrementLifeCount();
             score.DecrementScore(score.score / 2);
         }
         else if(collision.gameObject.CompareTag("Bullet")) {
