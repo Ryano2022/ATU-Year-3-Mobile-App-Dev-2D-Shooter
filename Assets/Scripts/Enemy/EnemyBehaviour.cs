@@ -57,7 +57,7 @@ public class EnemyBehaviour : MonoBehaviour
 
             // Reduce the enemy's health.
             health--;
-            Debug.Log("Enemy has been hit by a bullet.\nHealth: " + health + "/3");
+            Debug.Log("Enemy has been hit by a bullet.\n" + gameObject.name + " Health: " + health + "/3");
 
             // If the enemy's health is 0, then destroy the enemy.  
             if(health <= 0) {
