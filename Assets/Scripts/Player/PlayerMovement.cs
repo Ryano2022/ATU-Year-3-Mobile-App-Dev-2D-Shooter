@@ -129,13 +129,13 @@ public class PlayerMovement : MonoBehaviour
             // The raycast hit information.
             RaycastHit2D hitLeft = Physics2D.Raycast(leftStartPos, Vector2.left, 0.1f);
             // Check if the player is touching a wall.
-            Debug.DrawRay(leftStartPos, Vector2.left * 0.1f, Color.red);
+            //Debug.DrawRay(leftStartPos, Vector2.left * 0.1f, Color.red);
             result = hitLeft.collider != null;
         } 
         else if(direction == "right") {
             Vector2 rightStartPos = (Vector2)transform.position + Vector2.right * raycastOffset;
             RaycastHit2D hitRight = Physics2D.Raycast(rightStartPos, Vector2.right, 0.1f);
-            Debug.DrawRay(rightStartPos, Vector2.right * 1f, Color.red);
+            //Debug.DrawRay(rightStartPos, Vector2.right * 1f, Color.red);
             result = hitRight.collider != null;
         }
 

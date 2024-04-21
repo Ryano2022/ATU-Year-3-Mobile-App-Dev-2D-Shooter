@@ -13,7 +13,13 @@ public class Lives_UI : MonoBehaviour
 
 
     void Start() {
-        armourUI = GameObject.Find("Armour").GetComponent<Armour_UI>();
+        // if(SceneManager.GetActiveScene().buildIndex == 3) {
+        //     GameObject canvas = GameObject.Find("Canvas");
+        //     Transform icons = canvas.transform.Find("Icons");
+        //     Transform powerUps = icons.transform.Find("Power Ups");
+        //     armourUI = powerUps.transform.Find("Armour").GetComponent<Armour_UI>();
+        // }
+        // Debug.Log(armourUI);
 
         // Initially, all lives icons are active.
         UpdateIcons(maxLives);
@@ -28,11 +34,13 @@ public class Lives_UI : MonoBehaviour
 
     // Decrease the number of lives by 1.
     public void DecrementLifeCount() {
-        // If the armour icon is active, deactivate it and return.
-        if(armourUI.isActiveAndEnabled == true) {
-            armourUI.DeactivateArmourIcon();
-            return;
-        }
+        // // If the armour icon is active, deactivate it and return.
+        // if(SceneManager.GetActiveScene().buildIndex == 3) {
+        //     if(armourUI.isActiveAndEnabled == true) {
+        //         armourUI.DeactivateArmourIcon();
+        //         return;
+        //     }
+        // }
 
         currentLives--;
         UpdateIcons(currentLives);
